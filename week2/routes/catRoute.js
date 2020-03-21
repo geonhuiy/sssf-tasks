@@ -3,10 +3,13 @@
 const express = require("express");
 const router = express.Router();
 const app = express();
+const catController = require('../controllers/catController');
 
-router.get("/", (req, res) => {
+/*router.get("/", (req, res) => {
   res.send("From this endpoint you can get cats.");
-});
+});*/
+
+router.get('/', catController.cat_list_get);
 
 router.post("/", (req, res) => {
   res.send("From this endpoint you can add cats.");
