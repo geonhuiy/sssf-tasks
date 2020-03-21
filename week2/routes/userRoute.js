@@ -5,6 +5,8 @@ const app = express();
 const router = express.Router();
 const userController = require('../controllers/userController');
 const bodyParser = require('body-parser');
+const multer = require('multer');
+const upload = multer({ dest: './uploads/'})
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended : true}));
