@@ -13,7 +13,28 @@ const users = [
     password: 'qwer',
   },
 ];
+const pool = require('../database/db');
+const promisePool = pool.promise();
 
+const getAllUsers = async () => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM wop_user');
+    return rows;
+  } catch (e) {
+    console.log('error', e.message);
+  }   
+};
+
+const getUser = async (id) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM wop_user WHERE user_id = ?', [id]);
+    return rows;
+  } catch (e) {
+    console.log('error', e.message);
+  }   
+};
 module.exports = {
   users,
+  getAllUsers,
+  getUser
 };

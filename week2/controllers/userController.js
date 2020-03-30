@@ -3,16 +3,17 @@ const userModel = require("../models/userModel");
 
 const users = userModel.users;
 
-const user_list_get = (req, res) => {
+const user_list_get = async (req, res) => {
+  const users = await userModel.getAllUsers();
   res.json(users);
 };
 
-const user_get = (req, res) => {
-  var filtered = users.filter(user => user.id == req.params.id);
-  filtered.forEach(user => {
+const user_get = async (req, res) => {
+  const user1 = await userModel.getUser(req.params.id);
+  user1.forEach(user => {
       delete user.password;
   });
-  res.json(filtered);
+  res.json(user1);
 };
 
 module.exports = {
