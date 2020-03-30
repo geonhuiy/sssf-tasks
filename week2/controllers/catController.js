@@ -7,8 +7,10 @@ const cat_list_get = (req, res) => {
   res.json(cats);
 };
 
-const cat_get = (req, res) => {
-  res.json(cats.filter(cat => cat.id == req.params.id));
+const cat_get = async (req, res) => {
+  const cats = await catModel.getCat(req.params.id);
+  res.json(cats);
+  //res.json(cats.filter(cat => cat.id == req.params.id));
 };
 
 module.exports = {

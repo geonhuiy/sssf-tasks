@@ -17,7 +17,20 @@ const cats = [
     filename: 'http://placekitten.com/400/302',
   },
 ];
+const pool = require('../database/db');
+const promisePool = pool.promise();
+
+
+const getCat = async (id) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM wop_cat WHERE cat_id = ?', [id]);
+    return rows;
+  } catch (e) {
+    console.log('error', e.message);
+  }   
+};
 
 module.exports = {
   cats,
+  getCat
 };
