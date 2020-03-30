@@ -6,6 +6,8 @@ const port = 3000;
 const catRoute = require('./routes/catRoute');
 const userRoute = require('./routes/userRoute');
 const cors = require('cors');
+require('dotenv').config();
+const db = require('./database/db');
 app.use(cors());
 app.use('/cat', catRoute);
 app.use('/user', userRoute);
@@ -28,4 +30,7 @@ app.use('/user', userRoute);
   app.get(`/cat/:id`, (req,res) => {
     res.send(`You requested a cat whose id is ${req.params.id}`)
   })*/
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+  db.on('connected', () => {
+
+  })
+  app.listen(port, () => console.log(`Example app listening on port ${port}!`));

@@ -33,8 +33,17 @@ const getUser = async (id) => {
     console.log('error', e.message);
   }   
 };
+const addUser = async (name, email, password) => {
+  try {
+    const [rows] = await promisePool.query("INSERT INTO wop_user (name, email, password) VALUES ('"+name+"', '"+email+"','"+password+"')");
+    return rows;
+  } catch (e) {
+    console.log('error', e.message)
+  }
+}
 module.exports = {
   users,
   getAllUsers,
-  getUser
+  getUser,
+  addUser
 };

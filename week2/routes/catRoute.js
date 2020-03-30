@@ -18,8 +18,11 @@ router.get('/', catController.cat_list_get);
 });*/
 
 router.post('/', upload.single('catPic'), (req, res, next) => {
-    
+  catController.cat_create_post(req,res);
 })
+/*router.post('/', (req, res) => {
+  
+})*/
 
 router.put("/", (req, res) => {
   res.send("From this endpoint you can edit cats.");

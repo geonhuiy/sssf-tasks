@@ -13,6 +13,6 @@ router.use(bodyParser.urlencoded({extended : true}));
 router.get('/', userController.user_list_get);
 router.get(`/:id`, userController.user_get);
 router.post('/', (req, res) => {
-    console.log(req.body);
+    userController.user_create_post(req, res);
 })
 module.exports = router;
