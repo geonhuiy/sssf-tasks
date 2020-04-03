@@ -1,16 +1,17 @@
-'use strict';
-const express = require('express');
+"use strict";
+const express = require("express");
 const router = express.Router();
 const app = express();
 const port = 3000;
-const catRoute = require('./routes/catRoute');
-const userRoute = require('./routes/userRoute');
-const cors = require('cors');
-require('dotenv').config();
-const db = require('./database/db');
+const catRoute = require("./routes/catRoute");
+const userRoute = require("./routes/userRoute");
+const cors = require("cors");
+require("dotenv").config();
+const db = require("./database/mongodb");
 app.use(cors());
-app.use('/cat', catRoute);
-app.use('/user', userRoute);
+app.use("/cat", catRoute);
+app.use("/user", userRoute);
+
 /*app.get('/cat', (req, res) => {
     res.send('From this endpoint you can get cats.')
   });
@@ -30,7 +31,6 @@ app.use('/user', userRoute);
   app.get(`/cat/:id`, (req,res) => {
     res.send(`You requested a cat whose id is ${req.params.id}`)
   })*/
-  db.on('connected', () => {
-
-  })
+db.on('connected', () => {
   app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+});

@@ -2,11 +2,11 @@
 // catRoute
 const express = require("express");
 const router = express.Router();
-const app = express();
 const catController = require('../controllers/catController');
 const multer = require('multer');
 const upload = multer({ dest: './uploads/'})
-
+const bodyParser = require('body-parser');
+express().use(bodyParser.json());
 /*router.get("/", (req, res) => {
   res.send("From this endpoint you can get cats.");
 });*/
@@ -24,8 +24,8 @@ router.post('/', upload.single('catPic'), (req, res, next) => {
   
 })*/
 
-router.put("/", (req, res) => {
-  res.send("From this endpoint you can edit cats.");
+router.put('/', (req, res) => {
+  catController.cat_update_put(req,res);
 });
 
 router.delete("/", (req, res) => {

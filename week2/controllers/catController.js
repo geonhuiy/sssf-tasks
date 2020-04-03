@@ -18,8 +18,13 @@ const cat_create_post = async (req, res) => {
   const cat = await catModel.addCat( req.body.name, req.body.age, req.body.weight, req.body.owner, req.file.filename);
 }
 
+const cat_update_put = async (req,res) => {
+  const cat = await catModel.updateCat( req.body.id, req.body.name, req.body.age, req.body.weight, req.body.owner);
+}
+
 module.exports = {
   cat_list_get,
   cat_get,
-  cat_create_post
+  cat_create_post,
+  cat_update_put
 };

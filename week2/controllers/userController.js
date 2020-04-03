@@ -17,7 +17,7 @@ const user_get = async (req, res) => {
 };
 
 const user_create_post = async (req, res) => {
-  const user = await userModel.addUser( req.body.name, req.body.email, req.body.passwd);
+  const user = await userModel.addUser(req.body.id, req.body.name, req.body.email, req.body.passwd);
 }
 module.exports = {
   user_list_get,
